@@ -1,0 +1,15 @@
+# Python clickstack plugin
+
+This is a very simple Python plugin, mainly used for testing.
+
+It supports running a Python module with a list of arguments.
+
+It currently only copies *.py files from the project root -- it does not
+support packages or other directories. This can be enhanced as needed.
+
+Sample metadata config:
+
+    "python": {
+	"app_module": "simple.py",
+	"app_args": "$app_port $app_dir/s3"
+    }

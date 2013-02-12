@@ -1,0 +1,18 @@
+# -*-shell-script-*-
+
+. "$genapp_functions/core"
+
+install_app() {
+    cp $pkg_dir/*.py $app_dir
+}
+
+create_start_script() {
+    _app=$(metadata python_app_module)
+    _abs_app=$(join_paths $app_dir $_app)
+    _args=$(metadata python_app_args "")
+    _resolved_args=$(expand "$_args")
+    _start_script=$control_dir/start
+    echo "#!/bin/sh" > $_start_script
+    echo "exec python2 $_abs_app $_resolved_args" >> $_start_script
+    chmod 755 $_start_script
+}
